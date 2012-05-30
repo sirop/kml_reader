@@ -4,6 +4,7 @@
 #include <QXmlStreamReader>
 
 #include <GeoDataLineString.h>
+#include <GeoDataLinearRing.h>
 
 using namespace Marble;
 
@@ -15,6 +16,8 @@ class KmlReader
 public:
   KmlReader(QTreeWidget *tree);
   static QMap <QString,GeoDataLineString> countryPolygon;
+  //static QMap <QString,GeoDataCoordinates> countryMiddle;
+  //static QMap <QString,GeoDataLineString> countryRectangle;
 
   bool readFile(const QString &fileName);
 
@@ -26,12 +29,15 @@ private:
   void readMultiGeometry(QTreeWidgetItem *parent);
   void skipUnknownElement();
   GeoDataLineString StringToPolygon(const QString & PolygonString);
-
+ // GeoDataCoordinates getMiddle(const GeoDataLineString & gs);
+ // GeoDataLineString  getRectangle(const GeoDataLineString & gs, const GeoDataCoordinates & middle);
+ // GeoDataLineString  getRectangle(const GeoDataLineString & gs);
 
   QTreeWidget *treeWidget;
   QXmlStreamReader reader;
   QMultiMap <QString,GeoDataLineString> countryBorder;
-  QMap<QString,GeoDataLineString> flatMap(const QMultiMap<QString,GeoDataLineString> & countryBorders);
+  QMap<QString,GeoDataLineString> getBiggerPolygons(const QMultiMap<QString,GeoDataLineString> & countryBorders);
+  // bool crosses(const GeoDataLinearRing & LineString, const GeoDataLatLonBox & Box);
 
 };
 

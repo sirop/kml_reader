@@ -9,5 +9,5 @@ DEPENDPATH += .
 INCLUDEPATH += . /home/boris/marble_old/HEADER /home/boris/marble_old/src/lib
 LIBS+= /home/boris/marble-build/src/lib/libmarblewidget.so
 # Input
-HEADERS += kmlreader.h
-SOURCES += kmlreader.cpp main.cpp
+HEADERS += kmlreader.h kmlwriter.h
+SOURCES += kmlreader.cpp kmlwriter.cpp main.cpp
